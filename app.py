@@ -1,5 +1,5 @@
 # .gitignore file added
-#  GitHubSlack Integration added
+# GitHubSlack Integration added
 # 
 # # app.py
 
