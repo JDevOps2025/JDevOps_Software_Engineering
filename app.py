@@ -1,3 +1,9 @@
+# .gitignore file added
+#  GitHubSlack Integration added
+# 
+# # app.py
+
+
 from flask import Flask, send_from_directory
 
 app = Flask(__name__, static_folder='static')
