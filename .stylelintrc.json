@@ -1,9 +1,3 @@
-/* Stylelint Configuration File
-    Description: This file contains configuration settings for Stylelint, a static code analysis tool for CSS and other style files.
-    Check that style code adheres to specified coding standards and best practices.
-    Each rule can be customized to enforce specific style guidelines.
-*/
-
 {
   "extends": "stylelint-config-standard",
   "rules": {
