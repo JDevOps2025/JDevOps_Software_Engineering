@@ -1,0 +1,12 @@
+/* HTMLHint Configuration File
+    Description: This file contains configuration settings for HTMLHint, a static code analysis tool for HTML.
+    Check that HTML code adheres to specified coding standards and best practices.
+    Each rule can be enabled or disabled by setting its value to true or false.
+*/
+
+{
+  "tagname-lowercase": true,
+  "attr-lowercase": true,
+  "doctype-first": true,
+  "id-unique": true
+}
