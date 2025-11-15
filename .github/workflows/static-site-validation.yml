@@ -1,0 +1,47 @@
+# GitHub Actions workflow file
+# This workflow validate the static website content (HTML, CSS/SCSS, JS, accessibility, and end-to-end tests).
+
+name: Validate Static Web Content
+
+# Trigger the workflow on push to the main branch and on pull requests
+on:
+  push:
+    branches: [master] # This can be changed to any needed branch
+
+  pull_request:
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install tools
+        run: |
+          npm install -g htmlhint stylelint stylelint-config-standard eslint pa11y cypress
+
+      - name: HTML Validation
+        run: htmlhint ./static/**/*.html
+
+      - name: CSS Validation
+        run: |
+          stylelint "static/**/*.css"
+          stylelint "static/**/*.scss"
+
+      - name: JS Linting
+        run: eslint static/**/*.js
+
+      - name: Accessibility Check
+        run: pa11y http://localhost:5000 || false # Use 'true' if site not running on CI, or configure CI to launch server
+
+      - name: Cypress Functional Tests
+        run: |
+          npx cypress run --spec "static/e2e/main_page.cy.js"
+        env:
+          CYPRESS_baseUrl: "http://localhost:5000"

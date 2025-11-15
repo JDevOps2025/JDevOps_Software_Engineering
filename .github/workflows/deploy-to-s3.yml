@@ -1,3 +1,4 @@
+# GitHub Actions workflow file
 # This workflow deploys the contents of the 'static' folder to an AWS S3 bucket
 
 name: Deploy Static Website to AWS S3
