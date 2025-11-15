@@ -1,0 +1,22 @@
+{
+  "name": "static-website-validation",
+  "version": "1.0.0",
+  "description": "Automated validation and testing for static website content (HTML, CSS/SCSS, JS, accessibility, and E2E).",
+  "scripts": {
+    "htmlhint": "htmlhint ./static/**/*.html",
+    "stylelint": "stylelint \"static/**/*.css\" \"static/**/*.scss\"",
+    "eslint": "eslint static/**/*.js",
+    "pa11y": "pa11y http://localhost:5000",
+    "test:e2e": "cypress run",
+    "lint": "npm run htmlhint && npm run stylelint && npm run eslint",
+    "test": "npm run lint && npm run test:e2e"
+  },
+  "devDependencies": {
+    "htmlhint": "^1.1.4",
+    "stylelint": "^15.0.0",
+    "stylelint-config-standard": "^35.0.0",
+    "eslint": "^8.0.0",
+    "pa11y": "^6.0.0",
+    "cypress": "^13.0.0"
+  }
+}
