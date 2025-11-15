@@ -1,0 +1,18 @@
+/* ESLint Configuration File
+    Description: This file contains configuration settings for ESLint, a static code analysis tool for JavaScript and TypeScript.
+    It defines the environment, extends recommended rules, and customizes specific linting rules to enforce coding standards and best practices.
+    Each rule can be set to "off", "warn", or "error" to indicate its severity level.
+*/
+
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-undef": "error",
+    "no-console": "off"
+  }
+}
