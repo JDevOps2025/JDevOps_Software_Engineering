@@ -9,9 +9,29 @@ on:
       - master # This can be changed to any needed branch
 
 jobs:
-  deploy:
+  # Multi job deployment to publish changes in two different S3 buckets
+  # US East 1 Region
+  deploy-us-east-1:
     runs-on: ubuntu-latest
-
+    steps:
+      # Checkout your repo content
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      # Sync files with S3
+      # This action uses the AWS CLI so no credentials are hardcoded.
+      - name: Sync static folder to S3
+        uses: jakejarvis/s3-sync-action@v0.5.1
+        with:
+          args: --acl public-read --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_US_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_US_REGION }}
+          SOURCE_DIR: "static"
+  # EU West 1 Region
+  deploy-eu-west-1:
+    runs-on: ubuntu-latest
     steps:
       # Checkout your repo content
       - name: Checkout repository
@@ -24,8 +44,8 @@ jobs:
         with:
           args: --acl public-read --delete
         env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_S3_BUCKET: ${{ secrets.AWS_EU_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_REGION: ${{ secrets.AWS_EU_REGION }}
           SOURCE_DIR: "static"
