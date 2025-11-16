@@ -1,36 +1,25 @@
 {
-  "name": "static-website-validation",
+  "name": "jdevops_software_engineering",
   "version": "1.0.0",
-  "description": "Automated validation and testing for static website content (HTML, CSS/SCSS, JS, accessibility, and E2E).",
-  "scripts": {
-    "htmlhint": "htmlhint ./static/**/*.html",
-    "stylelint": "stylelint \"static/**/*.css\" \"static/**/*.scss\"",
-    "eslint": "eslint static/**/*.js",
-    "pa11y": "pa11y http://localhost:5000",
-    "test:e2e": "cypress run",
-    "lint": "npm run htmlhint && npm run stylelint && npm run eslint",
-    "test": "npm run lint && npm run test:e2e"
+  "description": "CI/CD project",
+  "homepage": "https://github.com/JDevOps2025/JDevOps_Software_Engineering#readme",
+  "bugs": {
+    "url": "https://github.com/JDevOps2025/JDevOps_Software_Engineering/issues"
   },
-  "devDependencies": {
-    "@eslint/js": "^9.39.1",
-    "cypress": "^13.0.0",
-    "eslint": "^9.39.1",
-    "htmlhint": "^1.1.4",
-    "pa11y": "^9.0.1",
-    "stylelint": "^15.0.0",
-    "stylelint-config-standard": "^35.0.0"
-  },
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JDevOps2025/JDevOps_Software_Engineering.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
+  "author": "Jesus Acuna",
   "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/JDevOps2025/JDevOps_Software_Engineering/issues"
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/JDevOps2025/JDevOps_Software_Engineering#readme"
+  "devDependencies": {
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0"
+  },
+  "keywords": []
 }
