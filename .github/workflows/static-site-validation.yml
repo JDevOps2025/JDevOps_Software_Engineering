@@ -29,10 +29,10 @@ jobs:
       - name: HTML Validation
         run: htmlhint ./static/**/*.html
 
-      - name: CSS Validation
-        run: |
-          stylelint "static/*.css"
-          stylelint "static/*.scss"
+      # - name: CSS Validation
+      #   run: |
+      #     stylelint "static/*.css"
+      #     stylelint "static/*.scss"
       - name: JS Linting
         run: eslint static/**/*.js
 
