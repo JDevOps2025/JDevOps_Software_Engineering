@@ -42,6 +42,6 @@ jobs:
 
       - name: Cypress Functional Tests
         run: |
-          npx cypress run --spec "static/e2e/main_page.cy.js"
+          npx cypress run --spec "cypress/e2e/main_page.cy.js"
         env:
           CYPRESS_baseUrl: "http://localhost:5000"
