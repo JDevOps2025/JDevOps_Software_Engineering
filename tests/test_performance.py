@@ -1,5 +1,5 @@
 import time
-from app import app
+from app.app import app
 
 def test_home_page_performance():
     """

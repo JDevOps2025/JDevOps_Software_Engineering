@@ -1,4 +1,4 @@
-from app import app
+from app.app import app
 
 def test_security_hidden_route():
     """
