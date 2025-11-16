@@ -24,8 +24,7 @@ jobs:
 
       - name: Install tools
         run: |
-          npm install
-      #   npm install -g htmlhint stylelint stylelint-config-standard eslint pa11y cypress
+          npm install -g htmlhint stylelint stylelint-config-standard eslint pa11y cypress
       - name: HTML Validation
         run: htmlhint ./static/**/*.html
 
@@ -34,7 +33,7 @@ jobs:
       #     stylelint "static/*.css"
       #     stylelint "static/*.scss"
       - name: JS ESLint Validation
-        run: eslint static/**/*.js
+        run: npx eslint static/**/*.js
 
       - name: Accessibility Check
         run: pa11y http://localhost:5000 || false # Use 'true' if site not running on CI, or configure CI to launch server
