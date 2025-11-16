@@ -33,7 +33,7 @@ jobs:
       #   run: |
       #     stylelint "static/*.css"
       #     stylelint "static/*.scss"
-      - name: JS Linting
+      - name: JS ESLint Validation
         run: eslint static/**/*.js
 
       - name: Accessibility Check

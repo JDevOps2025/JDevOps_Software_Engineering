@@ -12,12 +12,13 @@
     "test": "npm run lint && npm run test:e2e"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "cypress": "^13.0.0",
+    "eslint": "^9.39.1",
     "htmlhint": "^1.1.4",
+    "pa11y": "^9.0.1",
     "stylelint": "^15.0.0",
-    "stylelint-config-standard": "^35.0.0",
-    "eslint": "^8.0.0",
-    "pa11y": "^6.0.0",
-    "cypress": "^13.0.0"
+    "stylelint-config-standard": "^35.0.0"
   },
   "main": "index.js",
   "repository": {
