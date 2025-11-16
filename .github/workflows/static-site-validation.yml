@@ -31,7 +31,7 @@ jobs:
 
       - name: CSS Validation
         run: |
-          stylelint "static/assets/css/plugins/flaticon.css"
+          stylelint "static/assets/css/plugins/magnific-popup.css"
       #        stylelint "static/**/*.css"
       #        stylelint "static/**/*.scss"
       - name: JS Linting
