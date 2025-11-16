@@ -26,6 +26,7 @@ jobs:
         run: |
           npm install -g htmlhint stylelint stylelint-config-standard eslint pa11y cypress
           npm install --save-dev eslint globals
+          npm install --global wait-on
 
       - name: HTML Validation
         run: htmlhint ./static/**/*.html
@@ -42,6 +43,8 @@ jobs:
 
       - name: Cypress Functional Tests
         run: |
+          npx http-server ./static -p 5000 &
+          npx wait-on http://localhost:5000
           npx cypress run --spec "cypress/e2e/main_page.cy.js"
         env:
           CYPRESS_baseUrl: "http://localhost:5000"
