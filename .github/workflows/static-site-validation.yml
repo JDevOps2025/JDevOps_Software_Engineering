@@ -25,6 +25,8 @@ jobs:
       - name: Install tools
         run: |
           npm install -g htmlhint stylelint stylelint-config-standard eslint pa11y cypress
+          npm install --save-dev eslint globals
+
       - name: HTML Validation
         run: htmlhint ./static/**/*.html
 
