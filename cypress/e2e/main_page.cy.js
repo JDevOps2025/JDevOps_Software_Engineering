@@ -5,7 +5,7 @@
 */
 
 describe("Homepage", () => {
-  it("loads and shows the expected text", () => {
+  it("Best platform for AI technolgy products", () => {
     cy.visit("http://localhost:5000/");
     cy.contains("Your web server is running"); // main message
   });
