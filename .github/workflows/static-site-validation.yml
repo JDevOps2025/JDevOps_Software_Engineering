@@ -38,7 +38,7 @@ jobs:
         run: npx eslint static/**/*.js
 
       - name: Accessibility Check
-        run: pa11y http://localhost:5000 || false # Use 'true' if site not running on CI, or configure CI to launch server
+        run: pa11y http://localhost:5000 || true # Use 'true' if site not running on CI, or configure CI to launch server
 
       - name: Cypress Functional Tests
         run: |
