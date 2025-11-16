@@ -31,7 +31,7 @@ jobs:
 
       - name: CSS Validation
         run: |
-          stylelint "static/css/style.min.css"
+          stylelint "static/assets/css/style.min.css"
       #          stylelint "static/**/*.scss"
       - name: JS Linting
         run: eslint static/**/*.js
