@@ -5,8 +5,12 @@
 */
 
 describe("Homepage", () => {
-  it("Best platform for AI technolgy products", () => {
+  it("loads and shows the expected text", () => {
     cy.visit("http://localhost:5000/");
-    cy.contains("Your web server is running"); // main message
+    cy.contains("AI & MACHINE LEARNING PLATFORM NEW DEVELOPMENT"); // header text
+    cy.get("h2").should(
+      "contain.text",
+      "Best platform for AI technology products"
+    ); // main message
   });
 });
