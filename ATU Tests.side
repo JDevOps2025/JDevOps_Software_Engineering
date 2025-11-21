@@ -1,0 +1,60 @@
+{
+  "id": "031f99f7-8605-4900-8ecf-977846e602b2",
+  "version": "2.0",
+  "name": "ATU Tests",
+  "url": "http://us-east-1-jdevops-webpage.s3-website-us-east-1.amazonaws.com",
+  "tests": [{
+    "id": "cbaddc84-fb9b-44f0-8a92-07a7f01a2088",
+    "name": "Home page live",
+    "commands": [{
+      "id": "dd952395-9b89-4e30-be2d-c49b3fd14795",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9d64f19f-d31e-4d04-95c3-b0014aa3a5c8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1094x943",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e945aa73-219f-4592-8a40-76c853842ffb",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Aboute Us",
+      "targets": [
+        ["linkText=Read More", "linkText"],
+        ["css=.hero-btn > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Read More')]", "xpath:link"],
+        ["xpath=(//a[contains(@href, '#')])[12]", "xpath:href"],
+        ["xpath=//div[4]/div/div/div/div/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Read More')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5145c90b-b9d4-4be9-a4d8-c497031071d3",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//div[@id='header']/div/div/div/a/img",
+      "targets": [
+        ["css=.logo-white > img", "css:finder"],
+        ["xpath=//div[@id='header']/div/div/div/a/img", "xpath:idRelative"],
+        ["xpath=//a/img", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "ee0657ac-3449-4413-b2e6-8d493aa3c117",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["cbaddc84-fb9b-44f0-8a92-07a7f01a2088"]
+  }],
+  "urls": ["http://us-east-1-jdevops-webpage.s3-website-us-east-1.amazonaws.com/"],
+  "plugins": []
+}
