@@ -26,7 +26,7 @@ def driver():
 
 def test_home_page_live(driver):
     driver.get(BASE_URL)
-    # Click "Aboute Us" link
-    driver.find_element(By.LINK_TEXT, "Aboute Us").click()
-    # Click logo
-    driver.find_element(By.XPATH, "//div[@id='header']/div/div/div/a/img").click()
+    # Click botton "Read More"
+    driver.find_element(By.LINK_TEXT, "Read More").click()
+    # Click botton "Let's Talk"
+    driver.find_element(By.LINK_TEXT, "Let's Talk").click()
