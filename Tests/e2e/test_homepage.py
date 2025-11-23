@@ -28,5 +28,7 @@ def test_home_page_live(driver):
     driver.get(BASE_URL)
     # Click botton "Read More"
     driver.find_element(By.LINK_TEXT, "Read More").click()
+    clicked = True
     # Click botton "Let's Talk"
     driver.find_element(By.LINK_TEXT, "Let's Talk").click()
+    clicked = True
