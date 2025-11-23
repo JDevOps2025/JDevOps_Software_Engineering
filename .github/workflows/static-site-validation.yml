@@ -3,7 +3,7 @@
 
 name: Validate Static Web Content
 
-# Trigger the workflow on push to the main branch and on pull requests
+# Trigger the workflow on push to the master branch
 on:
   push:
     branches: [main] # This can be changed to any needed branch

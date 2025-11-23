@@ -3,7 +3,7 @@
 
 name: Deploy Static Website to AWS S3
 
-# Trigger the workflow on push to the main branch
+# Trigger the workflow on push to the master branch
 on:
   push:
     branches:
