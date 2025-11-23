@@ -41,4 +41,4 @@ jobs:
           HEADLESS: "true"
           US_SITE: ${{ secrets.US_SITE }}
         run: |
-          pytest
+          python -m pytest
