@@ -30,5 +30,5 @@ def test_home_page_live(driver):
     driver.find_element(By.LINK_TEXT, "Read More").click()
     clicked = True
     # Click botton "Let's Talk"
-    driver.find_element(By.LINK_TEXT, "Let's Talk").click()
+    driver.find_element(By.LINK_TEXT, "Lets's Talk").click()
     clicked = True
