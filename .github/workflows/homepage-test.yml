@@ -36,6 +36,20 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
 
+      - name: Wait for site to be deployed
+        env:
+          US_SITE: ${{ secrets.US_SITE }}
+        run: |
+          echo "Waiting for $US_SITE to be available..."
+          for i in {1..5}; do
+            if curl -s --head --fail "$US_SITE" >/dev/null; then
+              echo "Site is up!"
+              break
+            fi
+            echo "Attempt $i: site not yet available, sleeping..."
+            sleep 5
+          done
+
       - name: Run tests (headless)
         env:
           HEADLESS: "true"
