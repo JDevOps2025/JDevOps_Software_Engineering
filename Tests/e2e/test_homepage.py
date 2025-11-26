@@ -6,29 +6,21 @@
 
 
 # tests/e2e/test_homepage.py
-import pytest
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
+import os
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
-BASE_URL = "http://us-east-1-jdevops-webpage.s3-website-us-east-1.amazonaws.com/index.html"
-
-@pytest.fixture
-def driver():
-    options = Options()
-    options.add_argument("--headless=new")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    driver = webdriver.Chrome(options=options)
-    driver.set_window_size(1094, 943)
-    yield driver
-    driver.quit()
+# prefer CI-provided URL, fallback to original
+BASE_URL = os.getenv("US_SITE", "http://us-east-1-jdevops-webpage.s3-website-us-east-1.amazonaws.com/index.html")
 
 def test_home_page_live(driver):
     driver.get(BASE_URL)
-    # Click botton "Read More"
-    driver.find_element(By.LINK_TEXT, "Read More").click()
-    clicked = True
-    # Click botton "Let's Talk"
-    driver.find_element(By.LINK_TEXT, "Lets's Talk").click()
-    clicked = True
+    wait = WebDriverWait(driver, 10)
+    # Wait then click "Read More"
+    wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "Read More"))).click()
+
+    # Wait then click "Let's Talk" — fix typo and/or try partial text
+    try:
+        wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "Let's Talk"))).click()
+    except Exception:
+        wait.until(EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT, "Talk"))).click()
