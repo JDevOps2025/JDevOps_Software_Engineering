@@ -33,8 +33,7 @@ def test_home_page_live(driver):
     wait = WebDriverWait(driver, 10)
     # Wait then click "Read More"
     read_more = wait.until(EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT, "Read More"))).click()
-    return = read_more
-    # Wait then click "Lets's Talk"
+        # Wait then click "Lets's Talk"
     try:
         wait.until(EC.element_to_be_clickable((By.NAME, "Lets's Talk"))).click()
     except Exception:
