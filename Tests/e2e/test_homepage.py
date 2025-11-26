@@ -32,10 +32,10 @@ def test_home_page_live(driver):
     driver.get(BASE_URL)
     wait = WebDriverWait(driver, 10)
     # Wait then click "Read More"
-    wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "Read More"))).click()
+    wait.until(EC.element_to_be_clickable((By.NAME, "Read More"))).click()
 
     # Wait then click "Let's Talk" — fix typo and/or try partial text
     try:
-        wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "Let's Talk"))).click()
+        wait.until(EC.element_to_be_clickable((By.NAME, "Lets's Talk"))).click()
     except Exception:
         wait.until(EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT, "Talk"))).click()
