@@ -24,7 +24,7 @@ def driver():
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     driver = webdriver.Chrome(options=options)
-    driver.set_window_size(1094, 943)
+    driver.set_window_size(1500, 1155)
     yield driver
     driver.quit()
 
