@@ -11,7 +11,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 
-BASE_URL = "http://us-east-1-jdevops-webpage.s3-website-us-east-1.amazonaws.com"
+BASE_URL = "http://us-east-1-jdevops-webpage.s3-website-us-east-1.amazonaws.com/index.html"
 
 @pytest.fixture
 def driver():
