@@ -1,13 +1,10 @@
 # Created by venv; see https://docs.python.org/3/library/venv.html
 
-# Python virtual environments
 venv/
 Venv/
 env/
 ENV/
 .venv/
-
-# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -28,53 +25,31 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-
-# Virtual environments created by Python
 Include/
 Lib/
 Scripts/
 pyvenv.cfg
-
-# Node
 node_modules/
 npm-debug.log
 npm-error.log
 yarn-error.log
 package-lock.json
-
-# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-
-# Testing
 .pytest_cache/
 .coverage
 htmlcov/
 .nyc_output
 cypress/screenshots
 cypress/videos
-
-# Temporary files
 *.log
 *.tmp
 .DS_Store
 Thumbs.db
-
-# Environment variables
 .env
 .env.local
-
-# Test artifacts
 failure_homepage.png
 failure_homepage_source.html
-
-# Exclude ONLY unnecessary large directories, NOT Docker files
-# Docker and documentation files should be tracked:
-# ✅ Dockerfile
-# ✅ docker-compose.yml
-# ✅ nginx.conf
-# ✅ .dockerignore
-# ✅ *.md documentation files
