@@ -34,7 +34,7 @@ jobs:
   deploy-eu-west-1:
     runs-on: ubuntu-latest
     steps:
-      # Checkout your repo content
+      # Checkout the repository content
       - name: Checkout repository
         uses: actions/checkout@v3
 
