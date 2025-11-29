@@ -25,8 +25,8 @@ on:
 env:
   # GitHub Container Registry
   REGISTRY: ghcr.io
-  # Image name based on repository owner
-  IMAGE_NAME: ${{ github.repository_owner }}/jdevops_software_engineering/website
+  # Image name - fully lowercase for Docker requirements
+  IMAGE_NAME: jdevops-website
 
 jobs:
   # Build and test the Docker image locally
@@ -53,15 +53,15 @@ jobs:
           file: ./Dockerfile
           load: true
           tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test
+            ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+            ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:test
           cache-from: type=gha
           cache-to: type=gha,mode=max
       # Test the built Docker image
       - name: Test Docker image
         run: |
           # Run container and verify it starts
-          docker run -d --name test-container -p 8080:80 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test
+          docker run -d --name test-container -p 8080:80 ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:test
           # Wait for container to be healthy
           sleep 5
           # Test that Nginx is serving content
@@ -102,7 +102,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}
           tags: |
             # Tag with commit SHA for traceability
             type=sha,prefix={{branch}}-
@@ -125,7 +125,7 @@ jobs:
           cache-to: type=gha,mode=max
       # Output image digest to verify successful push
       - name: Image digest
-        run: echo "Image successfully pushed to ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}"
+        run: echo "Image successfully pushed to ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}"
 
   # Scan image for vulnerabilities
   security-scan:
