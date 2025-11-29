@@ -25,7 +25,7 @@ on:
 env:
   # GitHub Container Registry
   REGISTRY: ghcr.io
-  # Image name based on repository name (converted to lowercase for Docker requirements)
+  # Image name based on repository owner
   IMAGE_NAME: ${{ github.repository_owner }}/jdevops_software_engineering/website
 
 jobs:
