@@ -53,15 +53,15 @@ jobs:
           file: ./Dockerfile
           load: true
           tags: |
-            ${{ env.REGISTRY }}"/jdevops2025/jdevops-website":${{ github.sha }}
-            ${{ env.REGISTRY }}"/jdevops2025/jdevops-website":test
+            ${{ env.REGISTRY }}/jdevops2025/jdevops-website:${{ github.sha }}
+            ${{ env.REGISTRY }}/jdevops2025/jdevops-website:test
           cache-from: type=gha
           cache-to: type=gha,mode=max
       # Test the built Docker image
       - name: Test Docker image
         run: |
           # Run container and verify it starts
-          docker run -d --name test-container -p 8080:80 ${{ env.REGISTRY }}"/jdevops2025/jdevops-website":test
+          docker run -d --name test-container -p 8080:80 ${{ env.REGISTRY }}/jdevops2025/jdevops-website:test
           # Wait for container to be healthy
           sleep 5
           # Test that Nginx is serving content
@@ -102,7 +102,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}"/jdevops2025/jdevops-website"
+          images: ${{ env.REGISTRY }}/jdevops2025/jdevops-website
           tags: |
             # Tag with commit SHA for traceability
             type=sha,prefix={{branch}}-
@@ -125,7 +125,7 @@ jobs:
           cache-to: type=gha,mode=max
       # Output image digest to verify successful push
       - name: Image digest
-        run: echo "Image successfully pushed to ${{ env.REGISTRY }}"/jdevops2025/jdevops-website"
+        run: echo "Image successfully pushed to ${{ env.REGISTRY }}/jdevops2025/jdevops-website"
 
   # Scan image for vulnerabilities
   security-scan:
