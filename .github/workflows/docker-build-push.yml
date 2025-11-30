@@ -7,7 +7,8 @@ name: Build and Push Docker Image
 on: 
   push:
     branches:
-      - master
+      - AddContainers
+
     paths:
      # Only trigger if these files change
       - "static/**"
@@ -79,9 +80,10 @@ jobs:
 
   # Push image to GitHub Container Registry
   push:
-    # Only run if build job succeeded and on main branch
+    # Only run if build job succeeded on AddContainers branch
     needs: build
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/AddContainers'
+    # || github.ref == 'refs/heads/main'
     # Run on Ubuntu
     runs-on: ubuntu-latest
     steps:
