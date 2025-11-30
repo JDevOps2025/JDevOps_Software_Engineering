@@ -6,8 +6,7 @@ name: Validate Static Web Content
 # Trigger the workflow on push to the master branch
 on:
   push:
-    branches: [main] # This can be changed to any needed branch
-
+    branches: [AddContainers] # This can be changed to any needed branch
   pull_request:
 
 jobs:

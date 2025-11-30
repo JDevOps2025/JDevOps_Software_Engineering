@@ -8,6 +8,7 @@ on:
   push:
     branches:
       - AddContainers
+
     paths:
       # Only trigger if these files change
       - "static/**"
@@ -79,7 +80,7 @@ jobs:
 
   # Push image to GitHub Container Registry
   push:
-    # Only run if build job succeeded and on main branch
+    # Only run if build job succeeded on AddContainers branch
     needs: build
     if: github.ref == 'refs/heads/AddContainers'
     # || github.ref == 'refs/heads/main'

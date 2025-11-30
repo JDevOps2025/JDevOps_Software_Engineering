@@ -6,7 +6,7 @@ name: Selenium Pytest
 # Trigger the workflow on push to master branch
 on:
   push:
-    branches: [main]
+    branches: [AddContainers]
   pull_request:
 
 jobs:
