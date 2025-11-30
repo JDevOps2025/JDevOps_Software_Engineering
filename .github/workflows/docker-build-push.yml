@@ -152,9 +152,9 @@ jobs:
           tags: scan-image:latest
       # Run Trivy vulnerability scanner
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.28.0 # master
         with:
-          image-ref: scan-image:latest
+          image-ref: ${{ env.REGISTRY }}/jdevops2025/jdevops-website:${{ github.sha }} # scan-image:latest
           format: "sarif"
           output: "trivy-results.sarif"
           severity: "CRITICAL,HIGH"
