@@ -1,6 +1,13 @@
 # JDevOps Software Engineering - Static Website with Docker & CI/CD
 
-A production-ready static website with Docker containerization, GitHub Actions CI/CD, and comprehensive testing infrastructure.
+A production-ready static website multi-region (EU-West-1 & US-East-1) storage in S3 bucket and hosted in AWS with Docker containerization, GitHub Actions CI/CD, and comprehensive testing infrastructure.
+
+### Website Instances
+
+- **EU-WEST-1** - http://eu-west-1-jdevops-webpage.s3-website-eu-west-1.amazonaws.com
+- **US-EAST-1** - http://us-east-1-jdevops-webpage.s3-website-us-east-1.amazonaws.com
+
+### Run Time
 
 ```bash
 # Start containerized environment
