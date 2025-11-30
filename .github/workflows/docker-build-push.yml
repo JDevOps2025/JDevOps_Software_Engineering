@@ -21,6 +21,12 @@ on:
   #    - main
   #    - master
 
+# Permissions for all jobs
+permissions:
+  contents: read
+  packages: write
+  security-events: write
+
 # Environment variables
 env:
   # GitHub Container Registry
@@ -33,9 +39,6 @@ jobs:
   # Build and test the Docker image locally
   build:
     runs-on: ubuntu-latest
-    # Set permissions for this job
-    permissions:
-      contents: read
     steps:
       # Checkout the repository content
       - name: Checkout repository
@@ -80,10 +83,6 @@ jobs:
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
     # Run on Ubuntu
     runs-on: ubuntu-latest
-    # Permissions needed to push to GHCR
-    permissions:
-      contents: read
-      packages: write
     steps:
       # Checkout repository content
       - name: Checkout repository
@@ -133,9 +132,6 @@ jobs:
     # Run after build completes
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      security-events: write
     steps:
       # Checkout the repository content
       - name: Checkout repository
