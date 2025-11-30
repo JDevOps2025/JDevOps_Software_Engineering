@@ -4,17 +4,17 @@
 name: Build and Push Docker Image
 
 # Trigger the workflow on push to master branch
-on: workflow_dispatch
-#  push:
-#    branches:
-#      - master
-#    paths:
-      # Only trigger if these files change
-#      - "static/**"
-#      - "Dockerfile"
-#      - "nginx.conf"
-#      - ".dockerignore"
-#      - ".github/workflows/docker-build-push.yml"
+on: 
+  push:
+    branches:
+      - master
+    paths:
+     # Only trigger if these files change
+      - "static/**"
+      - "Dockerfile"
+      - "nginx.conf"
+      - ".dockerignore"
+      - ".github/workflows/docker-build-push.yml"
   # Run on pull requests to main
   # pull_request:
   #  branches:
