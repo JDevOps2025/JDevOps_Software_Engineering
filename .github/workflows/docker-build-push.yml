@@ -21,8 +21,9 @@ on:
   #    - main
   #    - master
 
-# Permissions for all jobs
+# Global permissions for all jobs
 permissions:
+  actions: read
   contents: read
   packages: write
   security-events: write
