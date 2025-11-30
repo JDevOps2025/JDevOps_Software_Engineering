@@ -25,8 +25,9 @@ on:
 env:
   # GitHub Container Registry
   REGISTRY: ghcr.io
-  # Image name - fully lowercase for Docker requirements
-  # IMAGE_NAME: ${{ github.repository }}
+  # Image name and owner - fully lowercase for Docker requirements
+  IMAGE_OWNER: jdevops2025
+  IMAGE_NAME: jdevops-website
 
 jobs:
   # Build and test the Docker image locally
@@ -53,15 +54,15 @@ jobs:
           file: ./Dockerfile
           load: true
           tags: |
-            ${{ env.REGISTRY }}/jdevops2025/jdevops-website:${{ github.sha }}
-            ${{ env.REGISTRY }}/jdevops2025/jdevops-website:test
+            ${{ env.REGISTRY }}/${{ env.IMAGE_OWNER }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_OWNER }}/${{ env.IMAGE_NAME }}:test
           cache-from: type=gha
           cache-to: type=gha,mode=max
       # Test the built Docker image
       - name: Test Docker image
         run: |
           # Run container and verify it starts
-          docker run -d --name test-container -p 8080:80 ${{ env.REGISTRY }}/jdevops2025/jdevops-website:test
+          docker run -d --name test-container -p 8080:80 ${{ env.REGISTRY }}/${{ env.IMAGE_OWNER }}/${{ env.IMAGE_NAME }}:test
           # Wait for container to be healthy
           sleep 5
           # Test that Nginx is serving content
@@ -102,7 +103,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/jdevops2025/jdevops-website
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_OWNER }}/${{ env.IMAGE_NAME }}
           tags: |
             # Tag with commit SHA for traceability
             type=sha,prefix={{branch}}-
@@ -125,7 +126,7 @@ jobs:
           cache-to: type=gha,mode=max
       # Output image digest to verify successful push
       - name: Image digest
-        run: echo "Image successfully pushed to ${{ env.REGISTRY }}/jdevops2025/jdevops-website"
+        run: echo "Image successfully pushed to ${{ env.REGISTRY }}/${{ env.IMAGE_OWNER }}/${{ env.IMAGE_NAME }}"
 
   # Scan image for vulnerabilities
   security-scan:
@@ -152,9 +153,9 @@ jobs:
           tags: scan-image:latest
       # Run Trivy vulnerability scanner
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.28.0 # master
+        uses: aquasecurity/trivy-action@master
         with:
-          image-ref: ${{ env.REGISTRY }}/jdevops2025/jdevops-website:${{ github.sha }} # scan-image:latest
+          image-ref: scan-image:latest
           format: "sarif"
           output: "trivy-results.sarif"
           severity: "CRITICAL,HIGH"
